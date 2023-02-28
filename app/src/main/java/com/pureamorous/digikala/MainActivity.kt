@@ -2,6 +2,7 @@ package com.pureamorous.digikala
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Scaffold
@@ -12,10 +13,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.pureamorous.digikala.navigation.BottomNavigationBar
 import com.pureamorous.digikala.navigation.SetupNavGraph
+import com.pureamorous.digikala.ui.components.AppConfig
 import com.pureamorous.digikala.ui.theme.DigikalaTheme
-import com.pureamorous.digikala.util.Constants.PERSIAN_LANG
+import com.pureamorous.digikala.util.Constants.ENGLISH_LANG
+import com.pureamorous.digikala.util.Constants.USER_LANGUAGE
 import com.pureamorous.digikala.util.LocaleUtils
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
 
@@ -25,8 +30,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             DigikalaTheme {
                 navController = rememberNavController()
-                LocaleUtils.setLocate(LocalContext.current,PERSIAN_LANG)
-                CompositionLocalProvider(LocalLayoutDirection provides androidx.compose.ui.unit.LayoutDirection.Rtl ) {
+                AppConfig()
+                Log.e("3636", USER_LANGUAGE)
+                LocaleUtils.setLocate(LocalContext.current, USER_LANGUAGE)
+                val direction = if (USER_LANGUAGE == ENGLISH_LANG) {
+                    androidx.compose.ui.unit.LayoutDirection.Ltr
+                } else {
+                    androidx.compose.ui.unit.LayoutDirection.Rtl
+                }
+
+                CompositionLocalProvider(LocalLayoutDirection provides direction) {
                     Scaffold(
                         bottomBar = {
                             BottomNavigationBar(navController = navController, onItemClick = {
