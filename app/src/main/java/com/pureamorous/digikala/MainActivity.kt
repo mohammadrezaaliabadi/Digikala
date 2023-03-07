@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.pureamorous.digikala.navigation.BottomNavigationBar
 import com.pureamorous.digikala.navigation.SetupNavGraph
 import com.pureamorous.digikala.ui.components.AppConfig
+import com.pureamorous.digikala.ui.components.ChangeStatusBarColor
 import com.pureamorous.digikala.ui.theme.DigikalaTheme
 import com.pureamorous.digikala.util.Constants.ENGLISH_LANG
 import com.pureamorous.digikala.util.Constants.USER_LANGUAGE
@@ -30,6 +31,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             DigikalaTheme {
                 navController = rememberNavController()
+                ChangeStatusBarColor(navController = navController)
                 AppConfig()
                 Log.e("3636", USER_LANGUAGE)
                 LocaleUtils.setLocate(LocalContext.current, USER_LANGUAGE)
