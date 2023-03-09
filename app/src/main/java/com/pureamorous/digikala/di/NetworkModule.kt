@@ -1,8 +1,10 @@
 package com.pureamorous.digikala.di
 
 import com.pureamorous.digikala.data.remote.HomeApiInterface
+import com.pureamorous.digikala.util.Constants.API_KEY
 import com.pureamorous.digikala.util.Constants.BASE_URL
 import com.pureamorous.digikala.util.Constants.TIMEOUT_IN_SECOND
+import com.pureamorous.digikala.util.Constants.USER_LANGUAGE
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,7 +35,14 @@ object NetworkModule {
         .connectTimeout(TIMEOUT_IN_SECOND, TimeUnit.SECONDS)
         .readTimeout(TIMEOUT_IN_SECOND, TimeUnit.SECONDS)
         .writeTimeout(TIMEOUT_IN_SECOND, TimeUnit.SECONDS)
+        .addInterceptor { chain ->
+            val request = chain.request().newBuilder().addHeader("x-api-key", API_KEY)
+                .addHeader("lang", USER_LANGUAGE)
+            chain.proceed(request.build())
+
+        }
         .addInterceptor(interceptor()).build()
+
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
@@ -41,8 +50,6 @@ object NetworkModule {
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
         .build()
-
-
 
 
 }
