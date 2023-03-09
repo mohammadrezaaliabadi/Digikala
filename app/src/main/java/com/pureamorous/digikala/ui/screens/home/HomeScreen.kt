@@ -1,4 +1,4 @@
-package com.pureamorous.digikala.ui.screens
+package com.pureamorous.digikala.ui.screens.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -22,5 +22,4 @@ fun HomeScreen(navController: NavHostController) {
     ) {
         Text(text = "HomeScreen")
     }
-
 }

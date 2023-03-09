@@ -1,6 +1,6 @@
 package com.pureamorous.digikala.di
 
-import com.pureamorous.digikala.data.remote.ApiInterface
+import com.pureamorous.digikala.data.remote.HomeApiInterface
 import com.pureamorous.digikala.util.Constants.BASE_URL
 import com.pureamorous.digikala.util.Constants.TIMEOUT_IN_SECOND
 import dagger.Module
@@ -42,10 +42,7 @@ object NetworkModule {
         .client(okHttpClient)
         .build()
 
-    @Provides
-    @Singleton
-    fun provideApiService(retrofit: Retrofit) : ApiInterface =
-        retrofit.create(ApiInterface::class.java)
+
 
 
 }
