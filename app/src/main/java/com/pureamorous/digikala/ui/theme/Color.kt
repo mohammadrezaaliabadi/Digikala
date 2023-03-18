@@ -1,4 +1,5 @@
 package com.pureamorous.digikala.ui.theme
+
 import androidx.compose.material.Colors
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
@@ -18,7 +19,7 @@ val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 
 
-val ColorScheme.splashBg:Color
+val ColorScheme.splashBg: Color
     @Composable
     get() = Color(0xFFed1b34)
 
@@ -29,3 +30,8 @@ val Colors.selectedBottomBar: Color
 val Colors.unSelectedBottomBar: Color
     @Composable
     get() = if (isLight) Color(0xFFA4A1A1) else Color(0xFF575A5E)
+
+val Colors.searchBarBg: Color
+    @Composable
+    get() = if (isLight) Color(0xFFF1F0EE) else Color(0xFF303235)
+
