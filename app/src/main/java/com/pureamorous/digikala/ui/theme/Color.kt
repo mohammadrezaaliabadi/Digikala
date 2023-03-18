@@ -45,3 +45,7 @@ val ColorScheme.amber:Color
 val ColorScheme.grayCategory:Color
     @Composable
     get() = Color(0xFFF1F0EE)
+
+val ColorScheme.DigikalaLightRed:Color
+    @Composable
+    get() = Color(0xffef4056)
