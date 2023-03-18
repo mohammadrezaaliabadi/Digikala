@@ -65,6 +65,7 @@ fun SearchContent() {
             style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Normal,
             text = stringResource(id = R.string.search_in)
+
         )
 
         Image(
