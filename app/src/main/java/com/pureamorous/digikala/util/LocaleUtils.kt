@@ -5,7 +5,7 @@ import android.content.res.Configuration
 import java.util.Locale
 
 object LocaleUtils {
-    fun setLocate(context: Context,language:String) = updateResource(context, language)
+    fun setLocale(context: Context, language:String) = updateResource(context, language)
     private fun updateResource(context: Context,language: String){
         context.resources.apply {
             val locale = Locale(language)

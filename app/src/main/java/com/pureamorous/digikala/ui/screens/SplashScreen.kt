@@ -22,7 +22,11 @@ fun SplashScreen(navController: NavHostController) {
     Splash()
     LaunchedEffect(true) {
         delay(2500)
-        navController.navigate(Screen.Home.route)
+        navController.navigate(Screen.Home.route) {
+            popUpTo(Screen.Splash.route) {
+                inclusive = true
+            }
+        }
     }
 }
 
@@ -49,9 +53,11 @@ fun Splash() {
                 modifier = Modifier.height(30.dp)
             )
         }
-        Box(modifier = Modifier
-            .fillMaxSize()
-            .padding(20.dp), contentAlignment = Alignment.BottomCenter){
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp), contentAlignment = Alignment.BottomCenter
+        ) {
             Loading3Dots(false)
         }
     }
