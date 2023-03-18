@@ -38,3 +38,10 @@ val Colors.darkText: Color
     @Composable
     get() = if (isLight) Color(0xFF414244) else Color(0xFFD8D8D8)
 
+val ColorScheme.amber:Color
+    @Composable
+    get() =  Color(0xffFFBF00)
+
+val ColorScheme.grayCategory:Color
+    @Composable
+    get() = Color(0xFFF1F0EE)
