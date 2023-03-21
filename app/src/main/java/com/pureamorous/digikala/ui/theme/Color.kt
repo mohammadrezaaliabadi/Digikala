@@ -64,4 +64,8 @@ val ColorScheme.DarkCyan: Color
     @Composable
     get() = Color(0xFF0fabc6)
 
+val ColorScheme.DigikalaLightGreen: Color
+    @Composable
+    get() = Color(0xff86bf3c)
+
 
