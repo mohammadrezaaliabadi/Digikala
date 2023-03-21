@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -42,29 +43,25 @@ fun AmazingOfferSection(viewModel: HomeViewModel = hiltViewModel()) {
             loading = true
         }
     }
-    
-    Column( modifier = Modifier
-        .fillMaxWidth()
-        .background(MaterialTheme.colorScheme.DigikalaLightRed)) {
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.DigikalaLightRed)
+    ) {
         LazyRow(modifier = Modifier.background(MaterialTheme.colorScheme.DigikalaLightRed)) {
             item {
                 AmazingOfferCard(R.drawable.amazings, R.drawable.box)
             }
-            item {
-                AmazingOfferCard(R.drawable.amazings, R.drawable.box)
-            }
-            item {
-                AmazingOfferCard(R.drawable.amazings, R.drawable.box)
-            }
-            item {
-                AmazingOfferCard(R.drawable.amazings, R.drawable.box)
+            items(amazingItemList) { item ->
+                AmazingItem(item = item)
             }
             item {
                 AmazingShowMoreItem()
             }
 
         }
-        
+
     }
 
 }

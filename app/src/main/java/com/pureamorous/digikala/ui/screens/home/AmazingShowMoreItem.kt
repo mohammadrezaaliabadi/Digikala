@@ -33,7 +33,7 @@ fun AmazingShowMoreItem() {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxSize()
         ) {
 
             Icon(
@@ -49,7 +49,7 @@ fun AmazingShowMoreItem() {
                 text = stringResource(id = R.string.see_all),
                 style = MaterialTheme.typography.labelSmall,
                 fontWeight = FontWeight.SemiBold,
-                color = androidx.compose.material.MaterialTheme.colors.darkText,
+                color = MaterialTheme.colorScheme.darkText,
             )
 
 
@@ -58,3 +58,4 @@ fun AmazingShowMoreItem() {
 
     }
 }
+

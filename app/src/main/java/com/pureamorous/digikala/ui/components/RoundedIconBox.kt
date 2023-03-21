@@ -1,11 +1,10 @@
 package com.pureamorous.digikala.ui.components
 
-import android.icu.text.CaseMap.Title
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -48,9 +47,9 @@ fun RoundedIconBox(
             text = title,
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
-            style = androidx.compose.material3.MaterialTheme.typography.labelSmall,
+            style = MaterialTheme.typography.labelSmall,
             fontWeight = FontWeight.SemiBold,
-            color =MaterialTheme.colors.darkText,
+            color =MaterialTheme.colorScheme.darkText,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )

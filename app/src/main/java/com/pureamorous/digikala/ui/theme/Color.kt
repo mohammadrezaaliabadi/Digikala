@@ -1,5 +1,6 @@
 package com.pureamorous.digikala.ui.theme
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Colors
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
@@ -34,9 +35,9 @@ val Colors.unSelectedBottomBar: Color
 val Colors.searchBarBg: Color
     @Composable
     get() = if (isLight) Color(0xFFF1F0EE) else Color(0xFF303235)
-val Colors.darkText: Color
+val ColorScheme.darkText: Color
     @Composable
-    get() = if (isLight) Color(0xFF414244) else Color(0xFFD8D8D8)
+    get() = if (!isSystemInDarkTheme()) Color(0xFF414244) else Color(0xFFD8D8D8)
 
 val ColorScheme.amber:Color
     @Composable
@@ -49,3 +50,18 @@ val ColorScheme.grayCategory:Color
 val ColorScheme.DigikalaLightRed:Color
     @Composable
     get() = Color(0xffef4056)
+
+val ColorScheme.DigikalaDarkRed: Color
+    @Composable
+    get() = Color(0xFFe6123d)
+
+val ColorScheme.semiDarkText: Color
+    @Composable
+    get() = if (!isSystemInDarkTheme()) Color(0xFF5C5E61) else Color(0xFFD8D8D8)
+
+
+val ColorScheme.DarkCyan: Color
+    @Composable
+    get() = Color(0xFF0fabc6)
+
+
