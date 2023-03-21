@@ -71,7 +71,7 @@ fun CategoryListSection(viewModel: HomeViewModel = hiltViewModel()) {
                 .fillMaxWidth()
         ) {
             for (item in categoryList) {
-
+                CircularCategoryItem(item = item)
             }
         }
 
