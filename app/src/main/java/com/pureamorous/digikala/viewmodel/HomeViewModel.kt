@@ -25,6 +25,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     val bestSellerItems = MutableStateFlow<NetworkResult<List<StoreProduct>>>(NetworkResult.Loading())
     val mostVisitedItems = MutableStateFlow<NetworkResult<List<StoreProduct>>>(NetworkResult.Loading())
     val mostFavoriteItems = MutableStateFlow<NetworkResult<List<StoreProduct>>>(NetworkResult.Loading())
+    val mostDiscountedItems = MutableStateFlow<NetworkResult<List<StoreProduct>>>(NetworkResult.Loading())
 
     suspend fun getSlider() {
         viewModelScope.launch {
@@ -58,6 +59,9 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
                 mostFavoriteItems.emit(repository.getMostFavoriteItems())
             }
 
+            launch {
+                mostDiscountedItems.emit(repository.getMostDiscountedItems())
+            }
 
         }
     }
