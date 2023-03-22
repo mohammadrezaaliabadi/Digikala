@@ -3,7 +3,7 @@ package com.pureamorous.digikala.ui.screens.home
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,8 +26,7 @@ fun SearchBarSection() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(65.dp)
-            .background(Color.White),
+            .height(65.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = LocalElevation.current.extraSmall)
     ) {
         Box(
@@ -35,7 +34,7 @@ fun SearchBarSection() {
                 .fillMaxSize()
                 .padding(LocalSpacing.current.small)
                 .clip(LocalShape.current.biggerSmall)
-                .background(MaterialTheme.colors.searchBarBg)
+                .background(MaterialTheme.colorScheme.searchBarBg)
         ) {
             SearchContent()
         }
@@ -61,8 +60,8 @@ fun SearchContent() {
             modifier = Modifier
                 .padding(start = 20.dp),
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colors.unSelectedBottomBar,
-            style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
+            color = MaterialTheme.colorScheme.unSelectedBottomBar,
+            style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Normal,
             text = stringResource(id = R.string.search_in)
 

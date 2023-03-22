@@ -24,17 +24,21 @@ val ColorScheme.splashBg: Color
     @Composable
     get() = Color(0xFFed1b34)
 
-val Colors.selectedBottomBar: Color
+val ColorScheme.selectedBottomBar: Color
     @Composable
-    get() = if (isLight) Color(0xFF43474C) else Color(0xFFCFD4DA)
+    get() = if (!isSystemInDarkTheme()) Color(0xFF43474C) else Color(0xFFCFD4DA)
 
-val Colors.unSelectedBottomBar: Color
+val ColorScheme.unSelectedBottomBar: Color
     @Composable
-    get() = if (isLight) Color(0xFFA4A1A1) else Color(0xFF575A5E)
+    get() = if (!isSystemInDarkTheme()) Color(0xFFA4A1A1) else Color(0xFF575A5E)
+val ColorScheme.bottomBar: Color
+    @Composable
+    get() = if (!isSystemInDarkTheme()) Color(0xFFFFFFFF) else Color(0xFF303235)
 
-val Colors.searchBarBg: Color
+
+val ColorScheme.searchBarBg: Color
     @Composable
-    get() = if (isLight) Color(0xFFF1F0EE) else Color(0xFF303235)
+    get() = if (!isSystemInDarkTheme()) Color(0xFFF1F0EE) else Color(0xFF303235)
 val ColorScheme.darkText: Color
     @Composable
     get() = if (!isSystemInDarkTheme()) Color(0xFF414244) else Color(0xFFD8D8D8)
@@ -49,7 +53,10 @@ val ColorScheme.grayCategory:Color
 
 val ColorScheme.DigikalaLightRed:Color
     @Composable
-    get() = Color(0xffef4056)
+    get() = if (!isSystemInDarkTheme()) Color(0xffef4056) else Color(0xFF8D2633)
+val ColorScheme.DigikalaLightRedText:Color
+    @Composable
+    get() = if (!isSystemInDarkTheme()) Color(0xffef4056) else Color(0xFFFFFFFF)
 
 val ColorScheme.DigikalaDarkRed: Color
     @Composable
@@ -66,6 +73,9 @@ val ColorScheme.DarkCyan: Color
 
 val ColorScheme.DigikalaLightGreen: Color
     @Composable
-    get() = Color(0xff86bf3c)
+    get() = if (!isSystemInDarkTheme()) Color(0xff86bf3c) else Color(0xFF3A531A)
+
+
+
 
 

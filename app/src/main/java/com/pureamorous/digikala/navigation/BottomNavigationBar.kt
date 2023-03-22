@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.pureamorous.digikala.R
+import com.pureamorous.digikala.ui.theme.bottomBar
 import com.pureamorous.digikala.ui.theme.selectedBottomBar
 import com.pureamorous.digikala.ui.theme.unSelectedBottomBar
 import com.pureamorous.digikala.util.Constants
@@ -60,43 +61,46 @@ fun BottomNavigationBar(
             deSelectedIcon = painterResource(id = R.drawable.user_outline)
         )
     )
-    
+
     val backStackEntry = navController.currentBackStackEntryAsState()
     val showBottomBar = backStackEntry.value?.destination?.route in items.map { it.route }
-    
-    if (showBottomBar){
-        BottomNavigation(modifier=Modifier, backgroundColor = Color.White, elevation = 5.dp) {
+
+    if (showBottomBar) {
+        BottomNavigation(
+            modifier = Modifier.height(60.dp),
+            backgroundColor = MaterialTheme.colorScheme.bottomBar, elevation = 5.dp
+        ) {
             items.forEachIndexed { index, item ->
                 val selected = item.route == backStackEntry.value?.destination?.route
-                BottomNavigationItem(selected =selected , onClick = { onItemClick(item) },
-                    selectedContentColor = androidx.compose.material.MaterialTheme.colors.selectedBottomBar,
-                    unselectedContentColor = androidx.compose.material.MaterialTheme.colors.unSelectedBottomBar,
-                icon = {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        if (selected) {
-                            Icon(
-                                modifier = Modifier.height(24.dp),
-                                painter = item.selectedIcon,
-                                contentDescription = item.name
-                            )
-                        } else {
-                            Icon(
-                                modifier = Modifier.height(24.dp),
-                                painter = item.deSelectedIcon,
-                                contentDescription = item.name
+                BottomNavigationItem(selected = selected, onClick = { onItemClick(item) },
+                    selectedContentColor = MaterialTheme.colorScheme.selectedBottomBar,
+                    unselectedContentColor = MaterialTheme.colorScheme.unSelectedBottomBar,
+                    icon = {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            if (selected) {
+                                Icon(
+                                    modifier = Modifier.height(24.dp),
+                                    painter = item.selectedIcon,
+                                    contentDescription = item.name
+                                )
+                            } else {
+                                Icon(
+                                    modifier = Modifier.height(24.dp),
+                                    painter = item.deSelectedIcon,
+                                    contentDescription = item.name
+                                )
+                            }
+                            Text(
+                                text = item.name,
+                                textAlign = TextAlign.Center,
+                                style = MaterialTheme.typography.labelSmall,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(top = 5.dp)
                             )
                         }
-                        Text(
-                            text = item.name,
-                            textAlign = TextAlign.Center,
-                            style = MaterialTheme.typography.labelSmall,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(top = 5.dp)
-                        )
-                    }
-                })
+                    })
             }
-            
+
         }
     }
 }

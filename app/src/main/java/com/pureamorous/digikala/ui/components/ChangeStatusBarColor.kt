@@ -1,5 +1,6 @@
 package com.pureamorous.digikala.ui.components
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
@@ -15,16 +16,21 @@ import com.pureamorous.digikala.ui.theme.Purple40
 fun ChangeStatusBarColor(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val systemUiController = rememberSystemUiController()
+    val statusBarColor = if (!isSystemInDarkTheme()) {
+        Color.White
+    } else {
+        Color.Black
+    }
 
     when (navBackStackEntry?.destination?.route) {
         Screen.Splash.route -> {
             SideEffect {
-                systemUiController.setStatusBarColor(color = Purple200 )
+                systemUiController.setStatusBarColor(color = Purple200)
             }
         }
         else -> {
             SideEffect {
-                systemUiController.setStatusBarColor(color = Color.White)
+                systemUiController.setStatusBarColor(color = statusBarColor)
             }
 
         }

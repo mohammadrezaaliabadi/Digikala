@@ -21,7 +21,7 @@ import com.pureamorous.digikala.R
 fun MostFavoriteProductsShowMore() {
     Column(
         modifier = Modifier
-            .size(180.dp, 375.dp)
+            .size(180.dp, 320.dp)
             .background(Color.White)
             .padding(
                 end = MaterialTheme.spacing.medium,
