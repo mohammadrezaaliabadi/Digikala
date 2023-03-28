@@ -1,7 +1,6 @@
 package com.pureamorous.digikala.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.Colors
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -70,6 +69,13 @@ val ColorScheme.semiDarkText: Color
 val ColorScheme.DarkCyan: Color
     @Composable
     get() = Color(0xFF0fabc6)
+
+
+val ColorScheme.LightCyan: Color
+    @Composable
+    get() = Color(0xFF17BFD3)
+
+
 
 val ColorScheme.DigikalaLightGreen: Color
     @Composable

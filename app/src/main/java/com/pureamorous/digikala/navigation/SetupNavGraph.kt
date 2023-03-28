@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.pureamorous.digikala.ui.screens.*
+import com.pureamorous.digikala.ui.screens.category.CategoryScreen
 import com.pureamorous.digikala.ui.screens.home.HomeScreen
 import com.pureamorous.digikala.ui.screens.home.WebPageScreen
 
