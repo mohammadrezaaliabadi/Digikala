@@ -9,11 +9,14 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.pureamorous.digikala.R
 import com.pureamorous.digikala.data.model.home.AmazingItem
 import com.pureamorous.digikala.data.remote.NetworkResult
 import com.pureamorous.digikala.ui.theme.DigikalaLightRed
+import com.pureamorous.digikala.util.Constants
 import com.pureamorous.digikala.viewmodel.HomeViewModel
 
 @Composable
@@ -64,5 +67,14 @@ fun AmazingOfferSection(viewModel: HomeViewModel = hiltViewModel()) {
 
     }
 
+}
+
+@Composable
+fun AmazingLogoChangeByLanguage(): Painter {
+    return if (Constants.USER_LANGUAGE == Constants.ENGLISH_LANG) {
+        painterResource(id = R.drawable.amazing_en)
+    } else {
+        painterResource(id = R.drawable.amazings)
+    }
 }
 

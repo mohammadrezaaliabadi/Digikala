@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -23,9 +24,11 @@ import coil.compose.rememberAsyncImagePainter
 import com.pureamorous.digikala.R
 import com.pureamorous.digikala.data.model.home.AmazingItem
 import com.pureamorous.digikala.ui.theme.*
+import com.pureamorous.digikala.util.Constants
 import com.pureamorous.digikala.util.DigitHelper.applyDiscount
 import com.pureamorous.digikala.util.DigitHelper.digitByLocate
 import com.pureamorous.digikala.util.DigitHelper.digitByLocateAndSeparator
+import kotlin.text.Typography.dollar
 
 @Composable
 fun AmazingItem(item: AmazingItem) {
@@ -138,7 +141,7 @@ fun AmazingItem(item: AmazingItem) {
                                 .wrapContentHeight(Alignment.CenterVertically)
                         ) {
                             Text(
-                                text = "${digitByLocate(item.discountPercent.toString())}%",
+                                text = "${digitByLocateAndSeparator(item.discountPercent.toString())}%",
                                 color = Color.White,
                                 style = MaterialTheme.typography.labelSmall,
                                 fontWeight = FontWeight.Bold,
@@ -161,7 +164,7 @@ fun AmazingItem(item: AmazingItem) {
                                 )
 
                                 Icon(
-                                    painter = painterResource(id = R.drawable.toman),
+                                    painter = currencyLogoChangeByLanguage(),
                                     contentDescription = "",
                                     modifier = Modifier
                                         .size(MaterialTheme.spacing.semiLarge)
@@ -185,5 +188,14 @@ fun AmazingItem(item: AmazingItem) {
             }
 
         }
+    }
+}
+
+@Composable
+fun currencyLogoChangeByLanguage(): Painter {
+    return if (Constants.USER_LANGUAGE == Constants.ENGLISH_LANG) {
+        painterResource(id = R.drawable.dollar)
+    } else {
+        painterResource(id = R.drawable.toman)
     }
 }

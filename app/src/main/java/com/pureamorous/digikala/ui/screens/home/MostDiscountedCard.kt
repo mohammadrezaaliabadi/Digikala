@@ -129,7 +129,7 @@ fun MostDiscountedCard(item : StoreProduct) {
                             .wrapContentHeight(Alignment.CenterVertically)
                     ) {
                         Text(
-                            text = "${DigitHelper.digitByLocate(item.discountPercent.toString())}%",
+                            text = "${DigitHelper.digitByLocateAndSeparator(item.discountPercent.toString())}%",
                             color = Color.White,
                             style = MaterialTheme.typography.labelSmall,
                             fontWeight = FontWeight.Bold,
@@ -149,7 +149,7 @@ fun MostDiscountedCard(item : StoreProduct) {
                             )
 
                             Icon(
-                                painter = painterResource(id = R.drawable.toman),
+                                painter = currencyLogoChangeByLanguage(),
                                 contentDescription = "",
                                 modifier = Modifier
                                     .size(MaterialTheme.spacing.semiLarge)

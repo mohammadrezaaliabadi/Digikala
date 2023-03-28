@@ -12,7 +12,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
@@ -132,7 +131,7 @@ fun MostFavoriteProductsOffer(item : StoreProduct) {
                                 .wrapContentHeight(Alignment.CenterVertically)
                         ) {
                             Text(
-                                text = "${DigitHelper.digitByLocate(item.discountPercent.toString())}%",
+                                text = "${DigitHelper.digitByLocateAndSeparator(item.discountPercent.toString())}%",
                                 color = Color.White,
                                 style = MaterialTheme.typography.headlineSmall,
                                 fontWeight = FontWeight.Bold,
@@ -152,7 +151,7 @@ fun MostFavoriteProductsOffer(item : StoreProduct) {
                                 )
 
                                 Icon(
-                                    painter = painterResource(id = R.drawable.toman),
+                                    painter = currencyLogoChangeByLanguage(),
                                     contentDescription = "",
                                     modifier = Modifier
                                         .size(MaterialTheme.spacing.semiLarge)

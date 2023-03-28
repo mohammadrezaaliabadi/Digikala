@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.pureamorous.digikala.R
+import com.pureamorous.digikala.ui.components.IconWithRotate
 import com.pureamorous.digikala.ui.theme.DigikalaLightRed
 import com.pureamorous.digikala.ui.theme.darkText
 import com.pureamorous.digikala.ui.theme.roundedShape
@@ -36,12 +37,11 @@ fun AmazingShowMoreItem() {
             modifier = Modifier.fillMaxSize()
         ) {
 
-            Icon(
-                painter = painterResource(id = R.drawable.show_more),
-                contentDescription = "",
-                tint = MaterialTheme.colorScheme.DigikalaLightRed,
-                modifier = Modifier.size(40.dp, 40.dp)
+            IconWithRotate(
+                painterResource(id = R.drawable.show_more),
+                MaterialTheme.colorScheme.DigikalaLightRed
             )
+
 
             Spacer(modifier = Modifier.height(20.dp))
 
