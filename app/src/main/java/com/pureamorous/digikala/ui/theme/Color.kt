@@ -61,6 +61,11 @@ val ColorScheme.DigikalaDarkRed: Color
     @Composable
     get() = Color(0xFFe6123d)
 
+val ColorScheme.digikalaRed: Color
+    @Composable
+    get() = Color(0xFFed1b34)
+
+
 val ColorScheme.semiDarkText: Color
     @Composable
     get() = if (!isSystemInDarkTheme()) Color(0xFF5C5E61) else Color(0xFFD8D8D8)
