@@ -2,8 +2,9 @@ package com.pureamorous.digikala.data.model.basket
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.pureamorous.digikala.util.Constants.SHOPPING_CART_TABLE
 
-@Entity
+@Entity(tableName = SHOPPING_CART_TABLE)
 data class CartItem(
     @PrimaryKey
     val itemId: String,

@@ -82,16 +82,18 @@ fun SuggestListSection(
     ) {
 
         for (item in suggestedList) {
-            SuggestionItemCard(item = item){
-                CartItem(
-                    it._id,
-                    it.name,
-                    it.seller,
-                    it.price,
-                    it.discountPercent,
-                    it.image,
-                    1,
-                    CartStatus.CURRENT_CART
+            SuggestionItemCard(item = item) {
+                viewModel.insertCartItem(
+                    CartItem(
+                        it._id,
+                        it.name,
+                        it.seller,
+                        it.price,
+                        it.discountPercent,
+                        it.image,
+                        1,
+                        CartStatus.CURRENT_CART
+                    )
                 )
             }
         }
