@@ -20,6 +20,8 @@ import com.pureamorous.digikala.ui.theme.searchBarBg
 import com.pureamorous.digikala.ui.theme.spacing
 import com.pureamorous.digikala.viewmodel.BasketViewModel
 import com.pureamorous.digikala.R
+import com.pureamorous.digikala.data.model.basket.CartItem
+import com.pureamorous.digikala.data.model.basket.CartStatus
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -80,11 +82,20 @@ fun SuggestListSection(
     ) {
 
         for (item in suggestedList) {
-            MostDiscountedCard(item)
+            SuggestionItemCard(item = item){
+                CartItem(
+                    it._id,
+                    it.name,
+                    it.seller,
+                    it.price,
+                    it.discountPercent,
+                    it.image,
+                    1,
+                    CartStatus.CURRENT_CART
+                )
+            }
         }
 
     }
-
-
 
 }
