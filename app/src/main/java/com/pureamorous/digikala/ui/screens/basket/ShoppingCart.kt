@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.pureamorous.digikala.data.model.basket.CartItem
+import com.pureamorous.digikala.data.model.basket.CartStatus
 import com.pureamorous.digikala.viewmodel.BasketViewModel
 import kotlinx.coroutines.flow.collectLatest
 
@@ -39,7 +40,7 @@ fun ShoppingCart(viewModel: BasketViewModel = hiltViewModel()) {
             item { SuggestListSection() }
         }else{
             items(currentCartItems){item -> 
-                CartItemCard(item = item)
+                CartItemCard(item = item,CartStatus.CURRENT_CART)
             }
         }
 
