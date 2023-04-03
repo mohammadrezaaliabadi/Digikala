@@ -2,12 +2,14 @@ package com.pureamorous.digikala.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pureamorous.digikala.data.model.basket.CartDetails
 import com.pureamorous.digikala.data.model.basket.CartItem
 import com.pureamorous.digikala.data.model.basket.CartStatus
 import com.pureamorous.digikala.data.model.home.StoreProduct
 import com.pureamorous.digikala.data.remote.NetworkResult
 import com.pureamorous.digikala.repository.BasketRepository
 import com.pureamorous.digikala.ui.screens.basket.BasketScreenState
+import com.pureamorous.digikala.util.DigitHelper.applyDiscount
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -24,6 +26,9 @@ class BasketViewModel @Inject constructor(private val repository: BasketReposito
 
     val suggestedList = MutableStateFlow<NetworkResult<List<StoreProduct>>>(NetworkResult.Loading())
 
+    val cartDetail = MutableStateFlow(CartDetails(0,0,0,0))
+
+
 
     private val _currentCartItems: MutableStateFlow<BasketScreenState<List<CartItem>>> =
         MutableStateFlow(BasketScreenState.Loading)
@@ -33,7 +38,8 @@ class BasketViewModel @Inject constructor(private val repository: BasketReposito
         MutableStateFlow(BasketScreenState.Loading)
     val nextCartItems: StateFlow<BasketScreenState<List<CartItem>>> = _nextCartItems
 
-
+    val currentCartItemsCount = repository.currentCartItemsCount
+    val nextCartItemsCount = repository.nextCartItemsCount
 
 
     init {
@@ -41,6 +47,12 @@ class BasketViewModel @Inject constructor(private val repository: BasketReposito
             launch {
                 repository.currentCartItems.collectLatest { cartItems ->
                     _currentCartItems.emit(BasketScreenState.Success(cartItems))
+                }
+            }
+
+            launch {
+                repository.currentCartItems.collectLatest { cartItems->
+                    calculateCartDetails(cartItems)
                 }
             }
             launch {
@@ -51,6 +63,21 @@ class BasketViewModel @Inject constructor(private val repository: BasketReposito
 
         }
     }
+
+    private fun calculateCartDetails(items: List<CartItem>) {
+        var totalCount = 0
+        var totalPrice = 0L
+        var totalDiscount = 0L
+        var payablePrice = 0L
+        items.forEach { item ->
+            totalPrice += item.price * item.count
+            payablePrice += applyDiscount(item.price, item.discountPercent) * item.count
+            totalCount += item.count
+        }
+        totalDiscount = totalPrice - payablePrice
+        cartDetail.value = CartDetails(totalCount, totalPrice, totalDiscount, payablePrice)
+    }
+
 
     fun getSuggestedItems() {
         viewModelScope.launch {

@@ -59,7 +59,11 @@ fun CartItemCard(
                         color = MaterialTheme.colorScheme.darkText
                     )
                     Text(
-                        text = "${digitByLocateAndSeparator(count.value.toString())}  کالا",
+                        text = "${digitByLocateAndSeparator(count.value.toString())} ${
+                            stringResource(
+                                R.string.goods
+                            )
+                        }",
                         style = MaterialTheme.typography.labelSmall,
                         color = Color.Gray
                     )
@@ -309,23 +313,33 @@ fun CartItemCard(
                     modifier = Modifier
                         .padding(MaterialTheme.spacing.semiMedium)
                 )
+                val discountAmount = (item.price * item.discountPercent) / 100
 
-                Row {
+                Column {
                     Text(
-                        text = digitByLocateAndSeparator(item.price.toString()),
-                        style = MaterialTheme.typography.headlineSmall,
+                        text = "${digitByLocateAndSeparator(discountAmount.toString())} ${stringResource(id = R.string.discount)}",
+                        style = MaterialTheme.typography.extraSmall,
                         fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.darkText,
+                        color = MaterialTheme.colorScheme.DigikalaLightRed,
                     )
+                    Row {
+                        Text(
+                            text = digitByLocateAndSeparator(item.price.toString()),
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.darkText,
+                        )
 
-                    Icon(
-                        painter = painterResource(id = R.drawable.toman),
-                        contentDescription = "",
-                        modifier = Modifier
-                            .size(24.dp)
-                            .padding(MaterialTheme.spacing.extraSmall)
-                    )
+                        Icon(
+                            painter = painterResource(id = R.drawable.toman),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .size(24.dp)
+                                .padding(MaterialTheme.spacing.extraSmall)
+                        )
+                    }
                 }
+
             }
 
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.semiLarge))
