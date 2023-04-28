@@ -33,6 +33,8 @@ fun BasketScreen(navController: NavHostController) {
 
 @Composable
 fun Basket(navController: NavHostController, viewModel: BasketViewModel = hiltViewModel()) {
+    val currentCartItemsCount by viewModel.currentCartItemsCount.collectAsState(initial = 0)
+    val nextCartItemsCount by viewModel.nextCartItemsCount.collectAsState(0)
     var selectedTabIndex by remember {
         mutableStateOf(0)
     }
@@ -70,6 +72,21 @@ fun Basket(navController: NavHostController, viewModel: BasketViewModel = hiltVi
                                 style = MaterialTheme.typography.labelSmall,
                                 fontWeight = FontWeight.SemiBold,
                             )
+                            val cartCounter = if (index == 0) {
+                                currentCartItemsCount
+                            } else {
+                                nextCartItemsCount
+                            }
+
+                            if (cartCounter > 0) {
+                                Spacer(modifier = Modifier.width(10.dp))
+                                SetBadgeToTab(
+                                    selectedTabIndex = selectedTabIndex,
+                                    index = index,
+                                    cartCounter = cartCounter
+                                )
+                            }
+
                         }
                     }
                 )

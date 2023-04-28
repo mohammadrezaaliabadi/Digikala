@@ -26,7 +26,7 @@ import com.pureamorous.digikala.R
 @Composable
 fun ShoppingCart(viewModel: BasketViewModel = hiltViewModel()) {
 
-    val cartDetail = viewModel.cartDetail.collectAsState()
+    val cartDetail by viewModel.cartDetail.collectAsState()
     val currentCartItemsState: BasketScreenState<List<CartItem>> by viewModel.currentCartItems
         .collectAsState(BasketScreenState.Loading)
 
@@ -62,7 +62,7 @@ fun ShoppingCart(viewModel: BasketViewModel = hiltViewModel()) {
                         }
 
                         item {
-                            CartPriceDetailSection(cartDetail.value)
+                            CartPriceDetailSection(cartDetail)
                         }
                     }
                 }
@@ -99,7 +99,7 @@ fun ShoppingCart(viewModel: BasketViewModel = hiltViewModel()) {
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 60.dp)
         ) {
-            BuyProcessContinue(cartDetail.value.payablePrice)
+            BuyProcessContinue(cartDetail.payablePrice)
         }
     }
 }
